@@ -1,5 +1,7 @@
 # Tab Network Governor
 
+[简体中文](README.zh-CN.md)
+
 **Tab Network Governor (TNG)** is a browser-side lifecycle/network governor for long-lived web-app tabs.
 
 Modern SPAs and PWAs may continue polling, synchronizing, sending telemetry, retrying failed requests, or maintaining realtime channels while hidden. With many long-lived tabs, per-tab background work can multiply into API rate limits, unnecessary network traffic, CPU/RAM pressure, and noisy retry loops.
