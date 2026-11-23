@@ -1,0 +1,43 @@
+name: Release v0.3.3 (one-shot)
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/release-v0.3.3-once.yml
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      TARGET_SHA: 47e33e4c2a55859da77b77a053a6d9bc86ffae7a
+      TAG: v0.3.3
+    steps:
+      - name: Checkout verified release source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TARGET_SHA }}
+          fetch-depth: 0
+
+      - name: Verify release target
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$TARGET_SHA"
+          echo "Release target: $TARGET_SHA"
+
+      - name: Build release artifacts
+        shell: bash
+        run: bash scripts/build.sh
+
+      - name: Publish GitHub prerelease
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh release create "$TAG"             --repo "$GITHUB_REPOSITORY"             --target "$TARGET_SHA"             --title "Tab Network Governor v0.3.3"             --notes-file docs/release-notes-v0.3.3.md             --prerelease             "dist/tab-network-governor-full-v0.3.3.zip"             "dist/tab-network-governor-lite-v0.3.3.zip"             "dist/tab-network-governor-portable-v0.3.3.user.js"             "dist/SHA256SUMS.txt"
