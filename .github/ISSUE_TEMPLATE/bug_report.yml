@@ -1,0 +1,62 @@
+name: Bug report
+description: Report a reproducible TNG problem
+title: "[Bug] "
+labels: [bug]
+body:
+  - type: dropdown
+    id: edition
+    attributes:
+      label: Edition
+      options:
+        - Full Extension
+        - Lite Extension
+        - Portable Userscript
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: TNG version
+      placeholder: 0.3.3
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser/client and version
+      placeholder: Chromium-based browser 123 / Firefox ...
+    validations:
+      required: true
+  - type: textarea
+    id: pattern
+    attributes:
+      label: Site Pattern (sanitized if necessary)
+      description: Do not post private URLs, credentials, tokens, or account identifiers.
+      placeholder: example.com or https://example.com
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction steps
+      placeholder: |
+        1. ...
+        2. Put tab in background...
+        3. Return to foreground...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Sanitized logs/screenshots
+      description: Remove Authorization headers, cookies, private request URLs, account IDs, and private content.

@@ -1,0 +1,33 @@
+name: Feature request
+description: Propose a new capability or policy mode
+title: "[Feature] "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or use case
+      description: Describe the workflow limitation rather than only the desired implementation.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+    validations:
+      required: true
+  - type: dropdown
+    id: editions
+    attributes:
+      label: Relevant edition
+      multiple: true
+      options:
+        - Full Extension
+        - Lite Extension
+        - Portable Userscript
+        - Shared Site Pattern/configuration layer
+  - type: textarea
+    id: safety
+    attributes:
+      label: Foreground/fail-open implications
+      description: Explain whether this could block active tabs, alter realtime behavior, or broaden site scope.

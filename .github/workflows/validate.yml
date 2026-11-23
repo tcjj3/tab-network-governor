@@ -1,0 +1,23 @@
+name: Validate
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate source
+        run: bash scripts/validate.sh
+      - name: Build release artifacts
+        run: bash scripts/build.sh
+      - name: Show checksums
+        run: cat dist/SHA256SUMS.txt

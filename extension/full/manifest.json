@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Tab Network Governor — Full",
+  "version": "0.3.3",
+  "description": "Soft-freezes and hard-blocks runtime network traffic from hidden tabs matched by user-defined site patterns.",
+  "permissions": [
+    "declarativeNetRequest",
+    "tabs",
+    "scripting",
+    "storage"
+  ],
+  "optional_host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html"
+}
