@@ -1,5 +1,7 @@
 # Tab Network Governor
 
+[English](README.md)
+
 **Tab Network Governor（TNG）** 是一个面向长期驻留 Web App 标签页的浏览器侧网络/生命周期治理工具。
 
 现代 SPA/PWA 即使已经处于后台，也可能继续轮询、同步、发送遥测、失败重试或维持实时连接。当浏览器长期打开大量标签时，这些“每个标签一点点”的后台活动会被放大成 API 限流、额外网络流量、CPU/RAM 压力与重试风暴。
